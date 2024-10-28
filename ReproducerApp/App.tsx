@@ -5,24 +5,21 @@
  * @format
  */
 
+import type { PropsWithChildren } from 'react';
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
+  KeyboardAvoidingView,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
-  View,
+  TextInput,
+  View
 } from 'react-native';
 
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
+  Header
 } from 'react-native/Libraries/NewAppScreen';
 
 type SectionProps = PropsWithChildren<{
@@ -30,14 +27,13 @@ type SectionProps = PropsWithChildren<{
 }>;
 
 function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
       <Text
         style={[
           styles.sectionTitle,
           {
-            color: isDarkMode ? Colors.white : Colors.black,
+            color: Colors.black,
           },
         ]}>
         {title}
@@ -46,7 +42,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
         style={[
           styles.sectionDescription,
           {
-            color: isDarkMode ? Colors.light : Colors.dark,
+            color: Colors.dark,
           },
         ]}>
         {children}
@@ -56,42 +52,84 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 }
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: Colors.lighter,
   };
 
+  const [value, setValue] = React.useState('');
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <SafeAreaView style={{flex: 1, ...backgroundStyle}}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <ScrollView style={{flex: 1, ...backgroundStyle}}>
+          <Header />
+          <View
+            style={{
+              backgroundColor: Colors.white,
+            }}>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+            <Section title="Step One">
+              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+              screen and then come back to see your edits.
+            </Section>
+          </View>
+        </ScrollView>
+        <View style={styles.bottomBox}>
+          <TextInput
+            style={styles.inputBox}
+            multiline
+            value={value}
+            onChangeText={setValue}
+          />
         </View>
-      </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -112,6 +150,26 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#222',
+  },
+  bottomBox: {
+    paddingHorizontal: 10,
+    paddingVertical: 7.5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#333',
+  },
+  inputBox: {
+    maxHeight: 60.5,
+    padding: 5,
+    justifyContent: 'center',
+    borderColor: 'gray',
+    backgroundColor: '#fff',
+    flex: 1,
   },
 });
 
