@@ -1,4 +1,8 @@
 {
   "name": "ReproducerApp",
-  "displayName": "ReproducerApp"
+  "ios": {
+    "bundleIdentifier": "com.anonymous.reproducerapp",
+    "supportsTablet": true
+  },
+  "newArchEnabled": true
 }
