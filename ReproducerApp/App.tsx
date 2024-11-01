@@ -1,160 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import type { PropsWithChildren } from 'react';
-import React from 'react';
+import * as React from 'react';
 import {
   KeyboardAvoidingView,
   SafeAreaView,
-  ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
-  View
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
-import {
-  Colors,
-  Header
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const backgroundStyle = {
-    backgroundColor: Colors.lighter,
-  };
-
-  const [value, setValue] = React.useState('');
-
-  return (
-    <SafeAreaView style={{flex: 1, ...backgroundStyle}}>
-      <KeyboardAvoidingView style={styles.container} behavior="padding">
-        <ScrollView style={{flex: 1, ...backgroundStyle}}>
-          <Header />
-          <View
-            style={{
-              backgroundColor: Colors.white,
-            }}>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+          <View style={styles.topbar}>
+            <View style={styles.channelsButtonWrapper}>
+              <TouchableOpacity style={styles.topbarButton}>
+                <Text style={[styles.channelsButtonText]}>#</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </ScrollView>
-        <View style={styles.bottomBox}>
-          <TextInput
-            style={styles.inputBox}
-            multiline
-            value={value}
-            onChangeText={setValue}
-          />
-        </View>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
-  );
+          <KeyboardAvoidingView style={styles.container} behavior="padding">
+            <View style={{flex: 1}}></View>
+            <View style={styles.bottomBox}>
+              <TextInput style={styles.inputBox} />
+            </View>
+          </KeyboardAvoidingView>
+        </SafeAreaView>
+      </View>
+    );
+  }
 }
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#222',
-  },
   bottomBox: {
     paddingHorizontal: 10,
     paddingVertical: 7.5,
@@ -171,6 +50,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flex: 1,
   },
+  topbar: {
+    flexDirection: 'row',
+    backgroundColor: '#333',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 10,
+  },
+  channelsButtonWrapper: {
+    paddingLeft: 10,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  topbarButton: {
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+  },
+  channelsButtonText: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontFamily: 'Gill Sans',
+    color: '#eee',
+    fontWeight: 'bold',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#333',
+  },
 });
-
-export default App;
