@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 export default class App extends React.Component {
   render() {
@@ -22,8 +23,8 @@ export default class App extends React.Component {
               </TouchableOpacity>
             </View>
           </View>
-          <KeyboardAvoidingView style={styles.container} behavior="padding">
-            <View style={{flex: 1}}></View>
+          <KeyboardAvoidingView onLayout={() => console.log('onLayout') }style={styles.container} behavior="padding">
+            <View style={{flex: 1}}><Animated.View /></View>
             <View style={styles.bottomBox}>
               <TextInput style={styles.inputBox} />
             </View>
